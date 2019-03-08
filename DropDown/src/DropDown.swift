@@ -229,6 +229,32 @@ public final class DropDown: UIView {
 		}
 		didSet { reloadAllComponents() }
 	}
+    
+    /**
+     The border width of DropDown.
+     
+     Changing the border width automatically reloads the drop down.
+     */
+    @objc public dynamic var borderWidth = DPDConstant.UI.BorderWidth {
+        willSet {
+            tableViewContainer.layer.borderWidth = newValue
+            tableView.layer.borderWidth = newValue
+        }
+        didSet { reloadAllComponents() }
+    }
+    
+    /**
+     The border color of DropDown.
+     
+     Changing the border color automatically reloads the drop down.
+     */
+    @objc public dynamic var borderColor = DPDConstant.UI.SeparatorColor {
+        willSet {
+            tableViewContainer.layer.borderColor = newValue.cgColor
+            tableView.layer.borderColor = newValue.cgColor
+        }
+        didSet { reloadAllComponents() }
+    }
 
 	/**
 	Alias method for `cornerRadius` variable to avoid ambiguity.
