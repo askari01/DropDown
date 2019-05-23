@@ -19,6 +19,7 @@ internal struct DPDConstant {
 	internal struct ReusableIdentifier {
 
 		static let DropDownCell = "DropDownCell"
+        static let DropDownSectionHeader = "DropDownSectionHeader"
 
 	}
 
@@ -27,12 +28,14 @@ internal struct DPDConstant {
 		static let TextColor = UIColor.black
         static let SelectedTextColor = UIColor.black
 		static let TextFont = UIFont.systemFont(ofSize: 15)
+        static let SectionTitleTextFont = UIFont.systemFont(ofSize: 13)
 		static let BackgroundColor = UIColor(white: 0.94, alpha: 1)
 		static let SelectionBackgroundColor = UIColor(white: 0.89, alpha: 1)
 		static let SeparatorColor = UIColor.clear
 		static let CornerRadius: CGFloat = 2
         static let BorderWidth: CGFloat = 0
 		static let RowHeight: CGFloat = 44
+        static let SectionHeaderHeight: CGFloat = 34
 		static let HeightPadding: CGFloat = 20
 
 		struct Shadow {
