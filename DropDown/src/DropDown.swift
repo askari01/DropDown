@@ -357,6 +357,24 @@ public final class DropDown: UIView {
 	@objc public dynamic var textColor = DPDConstant.UI.TextColor {
 		didSet { reloadAllComponents() }
 	}
+    
+    /**
+     The color of the text for each cells of the drop down.
+     
+     Changing the text color automatically reloads the drop down.
+     */
+    @objc public dynamic var sectionTitleColor = DPDConstant.UI.TextColor {
+        didSet { reloadAllComponents() }
+    }
+    
+    /**
+     The color of the text for each cells of the drop down.
+     
+     Changing the text color automatically reloads the drop down.
+     */
+    @objc public dynamic var sectionSeparatorColor = DPDConstant.UI.SectionSeparatorColor {
+        didSet { reloadAllComponents() }
+    }
 
     /**
      The color of the text for selected cells of the drop down.
@@ -377,7 +395,7 @@ public final class DropDown: UIView {
 	}
     
     /**
-     The font of the text for each cells of the drop down.
+     The font of the text for each section title of the drop down.
      
      Changing the text font automatically reloads the drop down.
      */
@@ -1103,7 +1121,7 @@ extension DropDown: UITableViewDataSource, UITableViewDelegate {
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard !sectionTitleDataSource.isEmpty else { return nil }
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: DPDConstant.ReusableIdentifier.DropDownSectionHeader) as! DropDownSectionHeader
-        header.titleLabel.text = sectionTitleDataSource[section]
+        configure(header, at: section)
         
         return header
     }
@@ -1131,6 +1149,13 @@ extension DropDown: UITableViewDataSource, UITableViewDelegate {
 		
 		customCellConfiguration?(indexPath, dataSource[indexPath.section][indexPath.row], cell)
 	}
+    
+    private func configure(_ header: DropDownSectionHeader, at section: Int) {
+        header.titleLabel.text = sectionTitleDataSource[section]
+        header.titleLabel.textColor = sectionTitleColor
+        header.titleLabel.font = sectionTitleTextFont
+        header.topSeparatorView.backgroundColor = sectionSeparatorColor
+    }
 
 	public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.isSelected = selectedRowIndices.first { $0 == indexPath } != nil

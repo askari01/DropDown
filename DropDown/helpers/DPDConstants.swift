@@ -26,6 +26,8 @@ internal struct DPDConstant {
 	internal struct UI {
 
 		static let TextColor = UIColor.black
+        static let SectionSeparatorColor = UIColor.clear
+        static let SectionTitleColor = UIColor.black
         static let SelectedTextColor = UIColor.black
 		static let TextFont = UIFont.systemFont(ofSize: 15)
         static let SectionTitleTextFont = UIFont.systemFont(ofSize: 13)
@@ -35,7 +37,7 @@ internal struct DPDConstant {
 		static let CornerRadius: CGFloat = 2
         static let BorderWidth: CGFloat = 0
 		static let RowHeight: CGFloat = 44
-        static let SectionHeaderHeight: CGFloat = 34
+        static let SectionHeaderHeight: CGFloat = 42
 		static let HeightPadding: CGFloat = 20
 
 		struct Shadow {

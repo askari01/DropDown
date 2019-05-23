@@ -167,15 +167,20 @@ class ViewController: UIViewController {
 		// So it will come over the anchor view and hide it completely
 		// If you want to have the dropdown underneath your anchor view, you can do this:
 		chooseArticleDropDown.bottomOffset = CGPoint(x: 0, y: chooseArticleButton.bounds.height)
-		
+		chooseArticleDropDown.sectionTitleColor = UIColor(red:0.62, green:0.62, blue:0.62, alpha:1)
+        
 		// You can also use localizationKeysDataSource instead. Check the docs.
-		chooseArticleDropDown.dataSource = [[
-			"iPhone SE | Black | 64G",
-			"Samsung S7",
-			"Huawei P8 Lite Smartphone 4G",
-			"Asus Zenfone Max 4G",
-			"Apple Watwh | Sport Edition"
-		]]
+        chooseArticleDropDown.sectionTitleDataSource = [
+            "Over Powered smartphones",
+            "Shit smartphones",
+            "Shittier smartphones"
+        ]
+        
+		chooseArticleDropDown.dataSource = [
+            ["iPhone SE | Black | 64G", "iPhone XS | White | 128G", "Apple Watwh | Sport Edition"],
+			["Samsung S7","Google Pixel 3a"],
+			["Asus Zenfone Max 4G"]
+        ]
 		
 		// Action triggered on selection
 		chooseArticleDropDown.selectionAction = { [weak self] (index, item) in
@@ -188,6 +193,9 @@ class ViewController: UIViewController {
                 self?.chooseArticleButton.setTitle("", for: .normal)
             }
         }
+        
+        chooseArticleDropDown.sectionSeparatorColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1)
+        chooseArticleDropDown.backgroundColor = UIColor.white
 		
 		// Action triggered on dropdown cancelation (hide)
 		//		dropDown.cancelAction = { [unowned self] in
