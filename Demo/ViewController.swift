@@ -208,6 +208,8 @@ class ViewController: UIViewController {
         button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)
         
         chooseArticleDropDown.customBottomView = button
+        
+        chooseArticleDropDown.maxHeight = 300
 		
 		// Action triggered on dropdown cancelation (hide)
 		//		dropDown.cancelAction = { [unowned self] in

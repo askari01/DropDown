@@ -189,6 +189,10 @@ public final class DropDown: UIView {
 		willSet { tableView.rowHeight = newValue }
 		didSet { reloadAllComponents() }
 	}
+    
+    public dynamic var maxHeight: CGFloat? {
+        didSet { reloadAllComponents() }
+    }
 
 	@objc fileprivate dynamic var tableViewBackgroundColor = DPDConstant.UI.BackgroundColor {
 		willSet {
@@ -215,6 +219,15 @@ public final class DropDown: UIView {
 	Changing the background color automatically reloads the drop down.
 	*/
 	@objc public dynamic var selectionBackgroundColor = DPDConstant.UI.SelectionBackgroundColor
+    
+    /**
+     The background color of the section header in the drop down.
+     
+     Changing the background color automatically reloads the drop down.
+     */
+    @objc public dynamic var sectionHeaderBackgroundColor = DPDConstant.UI.SectionHeaderBackgroundColor {
+        didSet { reloadAllComponents() }
+    }
 
 	/**
 	The separator color between cells.
@@ -442,7 +455,6 @@ public final class DropDown: UIView {
     public var sectionTitleDataSource = [String]() {
         didSet {
             tableView.sectionHeaderHeight = sectionTitleDataSource.isEmpty ? 0 : DPDConstant.UI.SectionHeaderHeight
-            
             deselectRows(at: selectedRowIndices)
             reloadAllComponents()
         }
@@ -806,7 +818,9 @@ extension DropDown {
 			offscreenHeight = abs(maxY - keyboardMinY)
 		} else if maxY > windowMaxY {
 			offscreenHeight = abs(maxY - windowMaxY)
-		}
+        } else if let maxHeight = maxHeight, maxY > maxHeight {
+            offscreenHeight = abs(maxY - maxHeight)
+        }
 		
 		return (x, y, width, offscreenHeight)
 	}
@@ -825,8 +839,10 @@ extension DropDown {
 		if y < windowY {
 			offscreenHeight = abs(y - windowY)
 			y = windowY
-		}
-		
+        }
+        
+        //FixMe: Did not had the time to take into account the maxHeight in the case of the dropDown is shown on the top.
+        
 		let width = self.width ?? (anchorView?.plainView.bounds.width ?? fittingWidth()) - topOffset.x
 		
 		return (x, y, width, offscreenHeight)
@@ -1113,8 +1129,15 @@ extension DropDown {
 	fileprivate var tableHeight: CGFloat {
         let bottomViewContainerHeight = bottomViewContainer.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
         
-        return tableView.sectionHeaderHeight * CGFloat(dataSource.count)
-            + (tableView.rowHeight * CGFloat(dataSource.flatMap({ $0 }).count)) + bottomViewContainerHeight
+        let dropDownHeight = tableView.sectionHeaderHeight * CGFloat(dataSource.count)
+            + (tableView.rowHeight * CGFloat(dataSource.flatMap({ $0 }).count))
+            + bottomViewContainerHeight
+        
+        if let maxHeight = maxHeight, dropDownHeight > maxHeight {
+            return maxHeight
+        }
+        
+        return dropDownHeight
 	}
 
     //MARK: Objective-C methods for converting the Swift type Index
@@ -1180,6 +1203,7 @@ extension DropDown: UITableViewDataSource, UITableViewDelegate {
 	}
     
     private func configure(_ header: DropDownSectionHeader, at section: Int) {
+        header.contentView.backgroundColor = sectionHeaderBackgroundColor
         header.titleLabel.text = sectionTitleDataSource[section]
         header.titleLabel.textColor = sectionTitleColor
         header.titleLabel.font = sectionTitleTextFont

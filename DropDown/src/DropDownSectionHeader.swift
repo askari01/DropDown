@@ -30,7 +30,7 @@ class DropDownSectionHeader: UITableViewHeaderFooterView {
 extension DropDownSectionHeader {
     
     private func setup() {
-        backgroundColor = .clear
+        contentView.backgroundColor = UIColor.clear
     }
     
 }
