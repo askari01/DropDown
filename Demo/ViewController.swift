@@ -129,7 +129,7 @@ class ViewController: UIViewController {
 				guard let cell = cell as? MyCell else { return }
 				
 				// Setup your custom UI components
-				cell.logoImageView.image = UIImage(named: "logo_\(index % 10)")
+				cell.logoImageView.image = UIImage(named: "logo_\(index.row % 10)")
 			}
 			/*** ---------------- ***/
 		}
@@ -167,15 +167,20 @@ class ViewController: UIViewController {
 		// So it will come over the anchor view and hide it completely
 		// If you want to have the dropdown underneath your anchor view, you can do this:
 		chooseArticleDropDown.bottomOffset = CGPoint(x: 0, y: chooseArticleButton.bounds.height)
-		
+		chooseArticleDropDown.sectionTitleColor = UIColor(red:0.62, green:0.62, blue:0.62, alpha:1)
+        
 		// You can also use localizationKeysDataSource instead. Check the docs.
+        chooseArticleDropDown.sectionTitleDataSource = [
+            "Over Powered smartphones",
+            "Shit smartphones",
+            "Shittier smartphones"
+        ]
+        
 		chooseArticleDropDown.dataSource = [
-			"iPhone SE | Black | 64G",
-			"Samsung S7",
-			"Huawei P8 Lite Smartphone 4G",
-			"Asus Zenfone Max 4G",
-			"Apple Watwh | Sport Edition"
-		]
+            ["iPhone SE | Black | 64G", "iPhone XS | White | 128G", "Apple Watwh | Sport Edition"],
+			["Samsung S7","Google Pixel 3a"],
+			["Asus Zenfone Max 4G"]
+        ]
 		
 		// Action triggered on selection
 		chooseArticleDropDown.selectionAction = { [weak self] (index, item) in
@@ -188,6 +193,23 @@ class ViewController: UIViewController {
                 self?.chooseArticleButton.setTitle("", for: .normal)
             }
         }
+        
+        chooseArticleDropDown.sectionSeparatorColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1)
+        chooseArticleDropDown.backgroundColor = UIColor.white
+        chooseArticleDropDown.cornerRadius = 0
+        
+        let button = UIButton()
+        button.setTitle("Create smartphone", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+        button.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        button.setTitleColor(UIColor.black, for: .normal)
+        button.backgroundColor = UIColor.white
+        button.contentHorizontalAlignment = .left
+        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)
+        
+        chooseArticleDropDown.customBottomView = button
+        
+        chooseArticleDropDown.maxHeight = 300
 		
 		// Action triggered on dropdown cancelation (hide)
 		//		dropDown.cancelAction = { [unowned self] in
@@ -209,7 +231,7 @@ class ViewController: UIViewController {
 		amountDropDown.bottomOffset = CGPoint(x: 0, y: amountButton.bounds.height)
 		
 		// You can also use localizationKeysDataSource instead. Check the docs.
-		amountDropDown.dataSource = [
+		amountDropDown.dataSource = [[
 			"10 €",
 			"20 €",
 			"30 €",
@@ -222,7 +244,7 @@ class ViewController: UIViewController {
 			"100 €",
 			"110 €",
 			"120 €"
-		]
+		]]
 		
 		// Action triggered on selection
 		amountDropDown.selectionAction = { [weak self] (index, item) in
@@ -239,11 +261,11 @@ class ViewController: UIViewController {
 		chooseDropDown.bottomOffset = CGPoint(x: 0, y: chooseButton.bounds.height)
 		
 		// You can also use localizationKeysDataSource instead. Check the docs.
-		chooseDropDown.dataSource = [
+		chooseDropDown.dataSource = [[
 			"Lorem ipsum dolor",
 			"sit amet consectetur",
 			"cadipisci en..."
-		]
+		]]
 		
 		// Action triggered on selection
 		chooseDropDown.selectionAction = { [weak self] (index, item) in
@@ -256,13 +278,13 @@ class ViewController: UIViewController {
 //		centeredDropDown.anchorView = centeredDropDownButton
 		
 		// You can also use localizationKeysDataSource instead. Check the docs.
-		centeredDropDown.dataSource = [
+		centeredDropDown.dataSource = [[
 			"The drop down",
 			"Is centered on",
 			"the view because",
 			"it has no anchor view defined.",
 			"Click anywhere to dismiss."
-		]
+		]]
         
         centeredDropDown.selectionAction = { [weak self] (index, item) in
             self?.centeredDropDownButton.setTitle(item, for: .normal)
@@ -273,11 +295,11 @@ class ViewController: UIViewController {
 		rightBarDropDown.anchorView = rightBarButton
 		
 		// You can also use localizationKeysDataSource instead. Check the docs.
-		rightBarDropDown.dataSource = [
+		rightBarDropDown.dataSource = [[
 			"Menu 1",
 			"Menu 2",
 			"Menu 3",
 			"Menu 4"
-		]
+		]]
 	}
 }
