@@ -81,6 +81,7 @@ public final class DropDown: UIView {
 	//MARK: UI
 	fileprivate let dismissableView = UIView()
 	fileprivate let tableViewContainer = UIView()
+    fileprivate let bottomViewContainer = UIView()
 	fileprivate let tableView = UITableView()
 	fileprivate var templateCell: DropDownCell!
     fileprivate lazy var arrowIndication: UIImageView = {
@@ -105,6 +106,14 @@ public final class DropDown: UIView {
 	public weak var anchorView: AnchorView? {
 		didSet { setNeedsUpdateConstraints() }
 	}
+    
+    /// The view to which the drop down will displayed onto.
+    public weak var customBottomView: UIView? {
+        didSet {
+            updateBottomContainer()
+            setNeedsUpdateConstraints()
+        }
+    }
 
 	/**
 	The possible directions where the drop down will be showed.
@@ -696,12 +705,20 @@ extension DropDown {
 			multiplier: 1,
 			constant: 0)
 		tableViewContainer.addConstraint(heightConstraint)
+        
+        bottomViewContainer.translatesAutoresizingMaskIntoConstraints = false
+        tableViewContainer.addSubview(bottomViewContainer)
+        
+        bottomViewContainer.leadingAnchor.constraint(equalTo: tableViewContainer.leadingAnchor).isActive = true
+        bottomViewContainer.trailingAnchor.constraint(equalTo: tableViewContainer.trailingAnchor).isActive = true
+        bottomViewContainer.bottomAnchor.constraint(equalTo: tableViewContainer.bottomAnchor).isActive = true
 
 		// Table view
 		tableViewContainer.addSubview(tableView)
 		tableView.translatesAutoresizingMaskIntoConstraints = false
 
-		tableViewContainer.addUniversalConstraints(format: "|[tableView]|", views: ["tableView": tableView])
+        tableViewContainer.addConstraints(format: "H:|[tableView]|", views: ["tableView": tableView])
+        tableViewContainer.addConstraints(format: "V:|[tableView]-0-[bottomViewContainer]|", views: ["tableView": tableView, "bottomViewContainer": bottomViewContainer])
 	}
 
 	public override func layoutSubviews() {
@@ -861,6 +878,16 @@ extension DropDown {
 			layout.width = fittingWidth()
 		}
 	}
+    
+    private func updateBottomContainer() {
+        guard let customBottomView = customBottomView else { return }
+        
+        customBottomView.translatesAutoresizingMaskIntoConstraints = false
+        bottomViewContainer.addSubview(customBottomView)
+        
+        bottomViewContainer.addUniversalConstraints(format: "|[customBottomView]|",
+                                                    views: ["customBottomView": customBottomView])
+    }
 	
 }
 
@@ -1084,8 +1111,10 @@ extension DropDown {
 
 	/// Returns the height needed to display all cells.
 	fileprivate var tableHeight: CGFloat {
+        let bottomViewContainerHeight = bottomViewContainer.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
+        
         return tableView.sectionHeaderHeight * CGFloat(dataSource.count)
-            + (tableView.rowHeight * CGFloat(dataSource.flatMap({ $0 }).count))
+            + (tableView.rowHeight * CGFloat(dataSource.flatMap({ $0 }).count)) + bottomViewContainerHeight
 	}
 
     //MARK: Objective-C methods for converting the Swift type Index

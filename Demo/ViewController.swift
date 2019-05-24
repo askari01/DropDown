@@ -196,6 +196,18 @@ class ViewController: UIViewController {
         
         chooseArticleDropDown.sectionSeparatorColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1)
         chooseArticleDropDown.backgroundColor = UIColor.white
+        chooseArticleDropDown.cornerRadius = 0
+        
+        let button = UIButton()
+        button.setTitle("Create smartphone", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+        button.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        button.setTitleColor(UIColor.black, for: .normal)
+        button.backgroundColor = UIColor.white
+        button.contentHorizontalAlignment = .left
+        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)
+        
+        chooseArticleDropDown.customBottomView = button
 		
 		// Action triggered on dropdown cancelation (hide)
 		//		dropDown.cancelAction = { [unowned self] in
