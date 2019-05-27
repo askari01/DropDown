@@ -33,6 +33,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="optionLabel" destination="dhL-pA-i6q" id="1GT-db-EaA"/>
+                <outlet property="optionLabelLeadingConstraint" destination="QIg-6Z-lbJ" id="6Hg-jh-4Nc"/>
             </connections>
         </view>
     </objects>

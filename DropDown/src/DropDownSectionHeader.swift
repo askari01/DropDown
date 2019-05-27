@@ -13,6 +13,7 @@ class DropDownSectionHeader: UITableViewHeaderFooterView {
     //MARK: - Properties
     
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var titleLabelLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var topSeparatorView: UIView!
     
     

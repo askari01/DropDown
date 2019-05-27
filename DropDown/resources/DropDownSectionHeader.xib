@@ -44,9 +44,10 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="titleLabel" destination="uLL-0J-S5K" id="Vsc-Qi-joG"/>
+                <outlet property="titleLabelLeadingConstraint" destination="Wua-x9-H6x" id="oyg-ox-Rsg"/>
                 <outlet property="topSeparatorView" destination="Hn4-gP-H1X" id="MTR-0O-X4E"/>
             </connections>
-            <point key="canvasLocation" x="53.623188405797109" y="201.5625"/>
+            <point key="canvasLocation" x="53.623188405797109" y="201.35869565217394"/>
         </view>
     </objects>
 </document>

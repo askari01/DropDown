@@ -426,6 +426,15 @@ public final class DropDown: UIView {
     }
     
     /**
+     The left marging space of all DropDown component.
+     
+     Changing the leading marging automatically reloads the drop down.
+     */
+    @objc public dynamic var leadingMargin = DPDConstant.UI.leadingMargin {
+        didSet { reloadAllComponents() }
+    }
+    
+    /**
      The NIB to use for DropDownCells
      
      Changing the cell nib automatically reloads the drop down.
@@ -1192,6 +1201,7 @@ extension DropDown: UITableViewDataSource, UITableViewDelegate {
 		cell.selectedBackgroundColor = selectionBackgroundColor
         cell.highlightTextColor = selectedTextColor
         cell.normalTextColor = textColor
+        cell.optionLabelLeadingConstraint.constant = leadingMargin
 		
 		if let cellConfiguration = cellConfiguration {
 			cell.optionLabel.text = cellConfiguration(indexPath, dataSource[indexPath.section][indexPath.row])
@@ -1208,6 +1218,8 @@ extension DropDown: UITableViewDataSource, UITableViewDelegate {
         header.titleLabel.textColor = sectionTitleColor
         header.titleLabel.font = sectionTitleTextFont
         header.topSeparatorView.backgroundColor = sectionSeparatorColor
+        header.topSeparatorView.isHidden = section == 0
+        header.titleLabelLeadingConstraint.constant = leadingMargin
     }
 
 	public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

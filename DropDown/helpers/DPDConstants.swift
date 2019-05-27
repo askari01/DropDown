@@ -40,6 +40,7 @@ internal struct DPDConstant {
 		static let RowHeight: CGFloat = 44
         static let SectionHeaderHeight: CGFloat = 42
 		static let HeightPadding: CGFloat = 20
+        static let leadingMargin: CGFloat = 8
 
 		struct Shadow {
 

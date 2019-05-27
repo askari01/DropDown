@@ -197,7 +197,8 @@ class ViewController: UIViewController {
         chooseArticleDropDown.sectionSeparatorColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1)
         chooseArticleDropDown.backgroundColor = UIColor.white
         chooseArticleDropDown.cornerRadius = 0
-        
+        chooseArticleDropDown.leadingMargin = 16
+
         let button = UIButton()
         button.setTitle("Create smartphone", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
