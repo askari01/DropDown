@@ -121,6 +121,13 @@ public final class DropDown: UIView {
 	See `Direction` enum for more info.
 	*/
 	public var direction = Direction.any
+    
+    /**
+     Boolean that allow the possiblity to dismiss the dropdown after a selection
+     
+     default is true
+     */
+    public var shouldDismissOnSelection = true
 
 	/**
 	The offset point relative to `anchorView` when the drop down is shown above the anchor view.
@@ -1262,7 +1269,9 @@ extension DropDown: UITableViewDataSource, UITableViewDelegate {
             deselectRow(at: indexPath)
         }
         
-        hide()
+        if shouldDismissOnSelection {
+            hide()
+        }
 	}
 
 }
