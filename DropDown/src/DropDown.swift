@@ -857,7 +857,8 @@ extension DropDown {
 		return (x, y, width, offscreenHeight)
 	}
 	
-	fileprivate func fittingWidth() -> CGFloat {
+    // This is used for computing the correct width of the dropdown for a custom xOffset
+	public func fittingWidth() -> CGFloat {
 		if templateCell == nil {
 			templateCell = (cellNib.instantiate(withOwner: nil, options: nil)[0] as! DropDownCell)
 		}
