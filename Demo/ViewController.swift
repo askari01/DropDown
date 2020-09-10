@@ -176,6 +176,8 @@ class ViewController: UIViewController {
             "Shittier smartphones"
         ]
         
+        chooseArticleDropDown.shouldDismissOnSelection = false
+        
 		chooseArticleDropDown.dataSource = [
             ["iPhone SE | Black | 64G", "iPhone XS | White | 128G", "Apple Watwh | Sport Edition"],
 			["Samsung S7","Google Pixel 3a"],

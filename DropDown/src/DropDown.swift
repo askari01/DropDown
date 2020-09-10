@@ -121,6 +121,13 @@ public final class DropDown: UIView {
 	See `Direction` enum for more info.
 	*/
 	public var direction = Direction.any
+    
+    /**
+     Boolean that allow the possiblity to dismiss the dropdown after a selection
+     
+     default is true
+     */
+    public var shouldDismissOnSelection = true
 
 	/**
 	The offset point relative to `anchorView` when the drop down is shown above the anchor view.
@@ -664,7 +671,11 @@ extension DropDown {
 		widthConstraint.constant = layout.width
 		heightConstraint.constant = layout.visibleHeight
 
-		tableView.isScrollEnabled = layout.offscreenHeight > 0
+        if let maxHeight = maxHeight, layout.visibleHeight == maxHeight {
+            tableView.isScrollEnabled = true
+        } else {
+            tableView.isScrollEnabled = layout.offscreenHeight > 0
+        }
 
 		DispatchQueue.main.async { [weak self] in
 			self?.tableView.flashScrollIndicators()
@@ -827,8 +838,6 @@ extension DropDown {
 			offscreenHeight = abs(maxY - keyboardMinY)
 		} else if maxY > windowMaxY {
 			offscreenHeight = abs(maxY - windowMaxY)
-        } else if let maxHeight = maxHeight, maxY > maxHeight {
-            offscreenHeight = abs(maxY - maxHeight)
         }
 		
 		return (x, y, width, offscreenHeight)
@@ -857,7 +866,8 @@ extension DropDown {
 		return (x, y, width, offscreenHeight)
 	}
 	
-	fileprivate func fittingWidth() -> CGFloat {
+    // This is used for computing the correct width of the dropdown for a custom xOffset
+	public func fittingWidth() -> CGFloat {
 		if templateCell == nil {
 			templateCell = (cellNib.instantiate(withOwner: nil, options: nil)[0] as! DropDownCell)
 		}
@@ -1261,7 +1271,9 @@ extension DropDown: UITableViewDataSource, UITableViewDelegate {
             deselectRow(at: indexPath)
         }
         
-        hide()
+        if shouldDismissOnSelection {
+            hide()
+        }
 	}
 
 }
