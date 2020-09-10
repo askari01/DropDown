@@ -671,7 +671,11 @@ extension DropDown {
 		widthConstraint.constant = layout.width
 		heightConstraint.constant = layout.visibleHeight
 
-		tableView.isScrollEnabled = layout.offscreenHeight > 0
+        if let maxHeight = maxHeight, layout.visibleHeight == maxHeight {
+            tableView.isScrollEnabled = true
+        } else {
+            tableView.isScrollEnabled = layout.offscreenHeight > 0
+        }
 
 		DispatchQueue.main.async { [weak self] in
 			self?.tableView.flashScrollIndicators()
@@ -834,8 +838,6 @@ extension DropDown {
 			offscreenHeight = abs(maxY - keyboardMinY)
 		} else if maxY > windowMaxY {
 			offscreenHeight = abs(maxY - windowMaxY)
-        } else if let maxHeight = maxHeight, maxY > maxHeight {
-            offscreenHeight = abs(maxY - maxHeight)
         }
 		
 		return (x, y, width, offscreenHeight)
