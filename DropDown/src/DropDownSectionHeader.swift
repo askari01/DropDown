@@ -6,7 +6,9 @@
 //  Copyright © 2019 Kevin Hirsch. All rights reserved.
 //
 
-import Foundation
+#if os(iOS)
+
+import UIKit
 
 class DropDownSectionHeader: UITableViewHeaderFooterView {
     
@@ -35,3 +37,5 @@ extension DropDownSectionHeader {
     }
     
 }
+
+#endif

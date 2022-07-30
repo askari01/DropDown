@@ -20,7 +20,7 @@ private typealias ComputeLayoutTuple = (x: CGFloat, y: CGFloat, width: CGFloat, 
 
 /// Can be `UIView` or `UIBarButtonItem`.
 @objc
-public protocol AnchorView: class {
+public protocol AnchorView: AnyObject {
 
 	var plainView: UIView { get }
 
@@ -615,7 +615,7 @@ public final class DropDown: UIView {
 private extension DropDown {
 
 	func setup() {
-        let sectionHeaderNib = UINib(nibName: "DropDownSectionHeader", bundle: bundle)
+        let sectionHeaderNib = UINib(nibName: "DropDownSectionHeader", bundle: DropDown.bundle)
         tableView.register(sectionHeaderNib, forHeaderFooterViewReuseIdentifier: DPDConstant.ReusableIdentifier.DropDownSectionHeader)
         tableView.register(cellNib, forCellReuseIdentifier: DPDConstant.ReusableIdentifier.DropDownCell)
         
