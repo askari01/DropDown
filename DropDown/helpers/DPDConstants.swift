@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Kevin Hirsch. All rights reserved.
 //
 
+#if os(iOS)
+
 import UIKit
 
 internal struct DPDConstant {
@@ -63,3 +65,5 @@ internal struct DPDConstant {
 	}
 
 }
+
+#endif

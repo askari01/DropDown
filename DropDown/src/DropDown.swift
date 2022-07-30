@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Kevin Hirsch. All rights reserved.
 //
 
+#if os(iOS)
+
 import UIKit
 
 public typealias Index = IndexPath
@@ -84,6 +86,16 @@ public final class DropDown: UIView {
     fileprivate let bottomViewContainer = UIView()
 	fileprivate let tableView = UITableView()
 	fileprivate var templateCell: DropDownCell!
+
+	//MARK: Bundle for Swift Package Manager
+	fileprivate static var bundle: Bundle {
+		#if SWIFT_PACKAGE
+			return Bundle.module
+		#else
+			return Bundle(for: DropDown.self)
+		#endif
+	}
+
     fileprivate lazy var arrowIndication: UIImageView = {
         UIGraphicsBeginImageContextWithOptions(CGSize(width: 20, height: 10), false, 0)
         let path = UIBezierPath()
@@ -446,7 +458,7 @@ public final class DropDown: UIView {
      
      Changing the cell nib automatically reloads the drop down.
      */
-	public var cellNib = UINib(nibName: "DropDownCell", bundle: Bundle(for: DropDownCell.self)) {
+	public var cellNib = UINib(nibName: "DropDownCell", bundle: bundle) {
 		didSet {
 			tableView.register(cellNib, forCellReuseIdentifier: DPDConstant.ReusableIdentifier.DropDownCell)
 			templateCell = nil
@@ -603,7 +615,7 @@ public final class DropDown: UIView {
 private extension DropDown {
 
 	func setup() {
-        let sectionHeaderNib = UINib(nibName: "DropDownSectionHeader", bundle: Bundle(for: DropDown.self))
+        let sectionHeaderNib = UINib(nibName: "DropDownSectionHeader", bundle: bundle)
         tableView.register(sectionHeaderNib, forHeaderFooterViewReuseIdentifier: DPDConstant.ReusableIdentifier.DropDownSectionHeader)
         tableView.register(cellNib, forCellReuseIdentifier: DPDConstant.ReusableIdentifier.DropDownCell)
         
@@ -1347,3 +1359,5 @@ private extension DispatchQueue {
 		}
 	}
 }
+
+#endif
