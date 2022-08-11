@@ -761,7 +761,7 @@ extension DropDown {
 		tableViewContainer.addSubview(tableView)
 		tableView.translatesAutoresizingMaskIntoConstraints = false
 
-		tableViewContainer.addUniversalConstraints(format: "|[tableView]|", views: ["tableView": tableView])
+        tableViewContainer.addConstraints(format: "H:|[tableView]|", views: ["tableView": tableView])
         tableViewContainer.addConstraints(format: "V:|[tableView]-0-[bottomViewContainer]|", views: ["tableView": tableView, "bottomViewContainer": bottomViewContainer])
 	}
 
@@ -1198,7 +1198,7 @@ extension DropDown: UITableViewDataSource, UITableViewDelegate {
     }
 
 	public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return dataSource.count
+		return dataSource[section].count
 	}
 
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
