@@ -19,7 +19,6 @@
 		0AB5D88E1D0EEEFF002D3A17 /* DropDownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB5D8861D0EEEFF002D3A17 /* DropDownCell.swift */; };
 		0AB5D88F1D0EEEFF002D3A17 /* DropDown.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AB5D8871D0EEEFF002D3A17 /* DropDown.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0AB5D8901D0EEFA8002D3A17 /* DropDown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AB5D8711D0EEECD002D3A17 /* DropDown.framework */; };
-		0AB5D8911D0EEFA8002D3A17 /* DropDown.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0AB5D8711D0EEECD002D3A17 /* DropDown.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0AB5D8981D0EF15D002D3A17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB5D8951D0EF15D002D3A17 /* AppDelegate.swift */; };
 		0AB5D8991D0EF15D002D3A17 /* NiceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB5D8961D0EF15D002D3A17 /* NiceButton.swift */; };
 		0AB5D89A1D0EF15D002D3A17 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB5D8971D0EF15D002D3A17 /* ViewController.swift */; };
@@ -53,7 +52,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				0AB5D8911D0EEFA8002D3A17 /* DropDown.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
