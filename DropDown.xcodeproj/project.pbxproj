@@ -14,7 +14,6 @@
 		0AB5D88C1D0EEEFF002D3A17 /* DropDown+Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB5D8841D0EEEFF002D3A17 /* DropDown+Appearance.swift */; };
 		0AB5D88D1D0EEEFF002D3A17 /* DropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB5D8851D0EEEFF002D3A17 /* DropDown.swift */; };
 		0AB5D88E1D0EEEFF002D3A17 /* DropDownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB5D8861D0EEEFF002D3A17 /* DropDownCell.swift */; };
-		0AB5D88F1D0EEEFF002D3A17 /* DropDown.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AB5D8871D0EEEFF002D3A17 /* DropDown.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0AB5D8981D0EF15D002D3A17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB5D8951D0EF15D002D3A17 /* AppDelegate.swift */; };
 		0AB5D8991D0EF15D002D3A17 /* NiceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB5D8961D0EF15D002D3A17 /* NiceButton.swift */; };
 		0AB5D89A1D0EF15D002D3A17 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB5D8971D0EF15D002D3A17 /* ViewController.swift */; };
@@ -54,7 +53,6 @@
 		0AB5D8841D0EEEFF002D3A17 /* DropDown+Appearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DropDown+Appearance.swift"; sourceTree = "<group>"; };
 		0AB5D8851D0EEEFF002D3A17 /* DropDown.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropDown.swift; sourceTree = "<group>"; };
 		0AB5D8861D0EEEFF002D3A17 /* DropDownCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropDownCell.swift; sourceTree = "<group>"; };
-		0AB5D8871D0EEEFF002D3A17 /* DropDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDown.h; sourceTree = "<group>"; };
 		0AB5D8951D0EF15D002D3A17 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0AB5D8961D0EF15D002D3A17 /* NiceButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NiceButton.swift; sourceTree = "<group>"; };
 		0AB5D8971D0EF15D002D3A17 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -155,7 +153,6 @@
 		0AB5D8721D0EEECD002D3A17 /* DropDown */ = {
 			isa = PBXGroup;
 			children = (
-				0AB5D8871D0EEEFF002D3A17 /* DropDown.h */,
 				0AB5D8751D0EEECD002D3A17 /* Info.plist */,
 				0AB5D8811D0EEEFF002D3A17 /* resources */,
 				0AB5D8831D0EEEFF002D3A17 /* src */,
@@ -193,7 +190,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0AB5D88F1D0EEEFF002D3A17 /* DropDown.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -495,6 +491,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
+				HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include";
 				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -517,6 +514,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
+				HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include";
 				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

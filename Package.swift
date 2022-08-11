@@ -17,12 +17,11 @@ let package = Package(
             name: "DropDown",
             dependencies: [],
             path: "DropDown",
-            exclude: ["Info.plist", "DropDown.h"],
-            resources: [
-               .process("resources"),
-               .process("src")
-            ]
+            exclude: ["Info.plist"]
+//            resources: [
+//               .process("resources"),
+//               .process("src"),
+//            ]
         )
-    ],
-    swiftLanguageVersions: [.v5]
+    ]
 )
