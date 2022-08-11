@@ -40,7 +40,7 @@ internal extension UIView {
 internal extension UIWindow {
 	
 	static func visibleWindow() -> UIWindow? {
-		var currentWindow = UIApplication
+		let currentWindow = UIApplication
             .shared
             .connectedScenes
             .filter({$0.activationState == .foregroundActive})
@@ -49,17 +49,6 @@ internal extension UIWindow {
             .windows
             .filter({$0.isKeyWindow})
             .first
-		
-		if currentWindow == nil {
-			let frontToBackWindows = Array(UIApplication.shared.windows.reversed()) 
-			
-			for window in frontToBackWindows {
-				if window.windowLevel == UIWindow.Level.normal {
-					currentWindow = window
-					break
-				}
-			}
-		}
 		
 		return currentWindow
 	}
