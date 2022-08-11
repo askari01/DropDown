@@ -21,7 +21,7 @@ internal struct DPDConstant {
 	internal struct ReusableIdentifier {
 
 		static let DropDownCell = "DropDownCell"
-        static let DropDownSectionHeader = "DropDownSectionHeader"
+        static let DropDownSectionHeader = "DropDownSectionHeader2"
 
 	}
 

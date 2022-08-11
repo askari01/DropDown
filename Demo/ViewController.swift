@@ -129,7 +129,7 @@ class ViewController: UIViewController {
 				guard let cell = cell as? MyCell else { return }
 				
 				// Setup your custom UI components
-				cell.logoImageView.image = UIImage(named: "logo_\(index % 10)")
+                cell.logoImageView.image = UIImage(named: "logo_\(index.row % 10)")
 			}
 			/*** ---------------- ***/
 		}
@@ -169,13 +169,13 @@ class ViewController: UIViewController {
 		chooseArticleDropDown.bottomOffset = CGPoint(x: 0, y: chooseArticleButton.bounds.height)
 		
 		// You can also use localizationKeysDataSource instead. Check the docs.
-		chooseArticleDropDown.dataSource = [
+		chooseArticleDropDown.dataSource = [[
 			"iPhone SE | Black | 64G",
 			"Samsung S7",
 			"Huawei P8 Lite Smartphone 4G",
 			"Asus Zenfone Max 4G",
 			"Apple Watwh | Sport Edition"
-		]
+		]]
 		
 		// Action triggered on selection
 		chooseArticleDropDown.selectionAction = { [weak self] (index, item) in
@@ -209,7 +209,7 @@ class ViewController: UIViewController {
 		amountDropDown.bottomOffset = CGPoint(x: 0, y: amountButton.bounds.height)
 		
 		// You can also use localizationKeysDataSource instead. Check the docs.
-		amountDropDown.dataSource = [
+		amountDropDown.dataSource = [[
 			"10 €",
 			"20 €",
 			"30 €",
@@ -222,7 +222,7 @@ class ViewController: UIViewController {
 			"100 €",
 			"110 €",
 			"120 €"
-		]
+		]]
 		
 		// Action triggered on selection
 		amountDropDown.selectionAction = { [weak self] (index, item) in
@@ -239,11 +239,11 @@ class ViewController: UIViewController {
 		chooseDropDown.bottomOffset = CGPoint(x: 0, y: chooseButton.bounds.height)
 		
 		// You can also use localizationKeysDataSource instead. Check the docs.
-		chooseDropDown.dataSource = [
+		chooseDropDown.dataSource = [[
 			"Lorem ipsum dolor",
 			"sit amet consectetur",
 			"cadipisci en..."
-		]
+		]]
 		
 		// Action triggered on selection
 		chooseDropDown.selectionAction = { [weak self] (index, item) in
@@ -256,13 +256,13 @@ class ViewController: UIViewController {
 //		centeredDropDown.anchorView = centeredDropDownButton
 		
 		// You can also use localizationKeysDataSource instead. Check the docs.
-		centeredDropDown.dataSource = [
+		centeredDropDown.dataSource = [[
 			"The drop down",
 			"Is centered on",
 			"the view because",
 			"it has no anchor view defined.",
 			"Click anywhere to dismiss."
-		]
+		]]
         
         centeredDropDown.selectionAction = { [weak self] (index, item) in
             self?.centeredDropDownButton.setTitle(item, for: .normal)
@@ -273,11 +273,11 @@ class ViewController: UIViewController {
 		rightBarDropDown.anchorView = rightBarButton
 		
 		// You can also use localizationKeysDataSource instead. Check the docs.
-		rightBarDropDown.dataSource = [
+		rightBarDropDown.dataSource = [[
 			"Menu 1",
 			"Menu 2",
 			"Menu 3",
 			"Menu 4"
-		]
+		]]
 	}
 }

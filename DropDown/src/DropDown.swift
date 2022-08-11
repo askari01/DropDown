@@ -615,7 +615,7 @@ public final class DropDown: UIView {
 private extension DropDown {
 
 	func setup() {
-        let sectionHeaderNib = UINib(nibName: "DropDownSectionHeader", bundle: DropDown.bundle)
+        let sectionHeaderNib = UINib(nibName: "DropDownSectionHeader2", bundle: DropDown.bundle)
         tableView.register(sectionHeaderNib, forHeaderFooterViewReuseIdentifier: DPDConstant.ReusableIdentifier.DropDownSectionHeader)
 		tableView.register(cellNib, forCellReuseIdentifier: DPDConstant.ReusableIdentifier.DropDownCell)
 
@@ -1203,7 +1203,7 @@ extension DropDown: UITableViewDataSource, UITableViewDelegate {
 
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard !sectionTitleDataSource.isEmpty else { return nil }
-        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: DPDConstant.ReusableIdentifier.DropDownSectionHeader) as! DropDownSectionHeader
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: DPDConstant.ReusableIdentifier.DropDownSectionHeader) as! DropDownSectionHeader2
         configure(header, at: section)
 
         return header
@@ -1234,7 +1234,7 @@ extension DropDown: UITableViewDataSource, UITableViewDelegate {
         customCellConfiguration?(indexPath, dataSource[indexPath.section][indexPath.row], cell)
 	}
 
-    private func configure(_ header: DropDownSectionHeader, at section: Int) {
+    private func configure(_ header: DropDownSectionHeader2, at section: Int) {
         header.contentView.backgroundColor = sectionHeaderBackgroundColor
         header.titleLabel.text = sectionTitleDataSource[section]
         header.titleLabel.textColor = sectionTitleColor
