@@ -10,7 +10,7 @@
 
 import UIKit
 
-internal struct DPDConstant {
+struct DPDConstant {
 
     static let keyWindow = UIApplication.shared.connectedScenes
         .filter({ $0.activationState == .foregroundActive })
@@ -21,20 +21,20 @@ internal struct DPDConstant {
         .filter({$0.isKeyWindow})
         .first
 
-	internal struct KeyPath {
+    struct KeyPath {
 
 		static let Frame = "frame"
 
 	}
 
-	internal struct ReusableIdentifier {
+    struct ReusableIdentifier {
 
 		static let DropDownCell = "DropDownCell"
         static let DropDownSectionHeader = "DropDownSectionHeader"
 
 	}
 
-	internal struct UI {
+    struct UI {
 
 		static let TextColor = UIColor.black
         static let SectionSeparatorColor = UIColor.clear
@@ -64,7 +64,7 @@ internal struct DPDConstant {
 
 	}
 
-	internal struct Animation {
+    struct Animation {
 
 		static let Duration = 0.15
 		static let EntranceOptions: UIView.AnimationOptions = [.allowUserInteraction, .curveEaseOut]

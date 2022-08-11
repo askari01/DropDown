@@ -10,7 +10,7 @@
 
 import UIKit
 
-internal final class KeyboardListener {
+final class KeyboardListener {
 	
 	static let sharedInstance = KeyboardListener()
 	
