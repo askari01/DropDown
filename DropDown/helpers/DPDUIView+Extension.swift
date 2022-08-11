@@ -40,7 +40,8 @@ internal extension UIView {
 internal extension UIWindow {
 	
 	static func visibleWindow() -> UIWindow? {
-		var currentWindow = UIApplication.shared.keyWindow
+
+		var currentWindow = DPDConstant.keyWindow
 		
 		if currentWindow == nil {
 			let frontToBackWindows = Array(UIApplication.shared.windows.reversed()) 
@@ -52,15 +53,6 @@ internal extension UIWindow {
 				}
 			}
 		}
-
-        let keyWindow = UIApplication.shared.connectedScenes
-            .filter({$0.activationState == .foregroundActive})
-            .compactMap({$0 as? UIWindowScene})
-            .first?.windows
-            .filter({$0.isKeyWindow}).first
-
-        print(currentWindow)
-        print(keyWindow)
 		return currentWindow
 	}
 	
