@@ -4,7 +4,7 @@ import PackageDescription
 let package = Package(
     name: "DropDown",
     platforms: [
-        .iOS(.v13)
+        .iOS(.v15)
     ],
     products: [
         .library(
@@ -17,11 +17,9 @@ let package = Package(
             name: "DropDown",
             dependencies: [],
             path: "DropDown",
-            exclude: ["Info.plist"]
-//            resources: [
-//               .process("resources"),
-//               .process("src"),
-//            ]
+            exclude: ["Info.plist"],
+            sources: ["src", "helpers"],
+            resources: [.process("resources")]
         )
     ]
 )
